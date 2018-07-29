@@ -1,6 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-
+    pageEncoding="utf-8"
+    import="com.java.model.User"%>
+<%
+	if(request.getAttribute("user")==null){
+		String userName=null;
+		String password=null;
+		
+		Cookie[] cookies=request.getCookies();
+		for(int i=0;cookies!=null&&i<cookies.length;i++){
+			if("user".equals(cookies[i].getName())){
+				userName=cookies[i].getValue().split("-")[0];
+				password=cookies[i].getValue().split("-")[1];
+			}
+		}
+		if(userName==null){
+			userName="";
+		}
+		if(password==null){
+			password="";
+		}
+		pageContext.setAttribute("user", new User(userName,password));
+	}
+%>
 <html lang="zh">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -48,13 +69,28 @@
 
 </style>
 
+<script type="text/javascript">
+	function checkForm(){
+		var userName=document.getElementById("userName").value;
+		var password=document.getElementById("password").value;
+		if(userName==null||userName==""){
+			document.getElementById("error").innerHTML="用户名不能为空";
+			return false;
+		}
+		if(password==null||password==""){
+			document.getElementById("error").innerHTML="密码不能为空";
+			return false;
+		}
+		return true;
+	}
+</script>
 </head>
 <body>
 <div class="container">
-      <form name="myForm" class="form-signin" action="login" method="post" >
+      <form name="myForm" class="form-signin" action="login" method="post" onsubmit="return checkForm()">
         <h2 class="form-signin-heading">屌丝日记本</h2>
-        <input id="userName" name="userName"  type="text" class="input-block-level" placeholder="屌丝名...">
-        <input id="password" name="password"   type="password" class="input-block-level" placeholder="屌丝码..." >
+        <input id="userName" name="userName"  value="${user.name }" type="text" class="input-block-level" placeholder="屌丝名...">
+        <input id="password" name="password"  value="${user.password }" type="password" class="input-block-level" placeholder="屌丝码..." >
         <label class="checkbox">
           <input id="remember" name="remember" type="checkbox" value="remember-me">记住我 &nbsp;&nbsp;&nbsp;&nbsp; <font id="error" color="red">${error }</font>  
         </label>

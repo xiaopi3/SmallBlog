@@ -5,14 +5,9 @@ import java.sql.DriverManager;
 
 public class DbUtil {
 	
-	private String url="jdbc:mysql://localhost:3306/db_blog?useSSL=false";
-	private String driver="com.mysql.jdbc.Driver";
-	private String userName="root";
-	private String userPassword="123456";
-	
 	public Connection getCon() throws Exception {
-		Class.forName(driver);
-		Connection con = DriverManager.getConnection(url, userName, userPassword);
+		Class.forName(PropertiesUtil.getValue("driver"));
+		Connection con = DriverManager.getConnection(PropertiesUtil.getValue("url"), PropertiesUtil.getValue("userName"), PropertiesUtil.getValue("userPassword"));
 		return con;
 	}
 	
