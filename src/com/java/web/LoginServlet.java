@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet{
 		String password=req.getParameter("password");
 		String remember=req.getParameter("remember");
 		if(userName==null||password==null) {
-			req.setAttribute("error", "用户名或密码为空");
+			req.setAttribute("error", "锟矫伙拷锟斤拷锟斤拷锟斤拷锟斤拷为锟斤拷");
 			resp.sendRedirect("login.jsp");
 			return;
 		}
@@ -49,8 +49,8 @@ public class LoginServlet extends HttpServlet{
 			User currentUser = userDao.login(con, user);
 			if(currentUser==null) {
 				req.setAttribute("user", user);
-				req.setAttribute("error", "用户名或密码错误");
-				//resp.sendRedirect("login.jsp");不能使用客户端跳转，会丢失req和resp
+				req.setAttribute("error", "鐢ㄦ埛鍚嶆垨瀵嗙爜閿欒");
+				//resp.sendRedirect("login.jsp");
 				req.getRequestDispatcher("login.jsp").forward(req, resp);
 			}else {
 				if("remember-me".equals(remember)) {

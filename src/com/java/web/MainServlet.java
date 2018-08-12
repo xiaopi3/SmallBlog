@@ -118,11 +118,11 @@ public class MainServlet extends HttpServlet{
 	private String genPagation(int totalNum,int currentPage,int pageSize){
 		int totalPage=totalNum%pageSize==0?totalNum/pageSize:totalNum/pageSize+1;
 		StringBuffer pageCode=new StringBuffer();
-		pageCode.append("<li><a href='main?page=1'>��ҳ</a></li>");
+		pageCode.append("<li><a href='main?page=1'>首页</a></li>");
 		if(currentPage==1){
-			pageCode.append("<li class='disabled'><a href='#'>��һҳ</a></li>");
+			pageCode.append("<li class='disabled'><a href='#'>上一页</a></li>");
 		}else{
-			pageCode.append("<li><a href='main?page="+(currentPage-1)+"'>��һҳ</a></li>");
+			pageCode.append("<li><a href='main?page="+(currentPage-1)+"'>上一页</a></li>");
 		}
 		for(int i=currentPage-2;i<=currentPage+2;i++){
 			if(i<1||i>totalPage){
@@ -135,11 +135,11 @@ public class MainServlet extends HttpServlet{
 			}
 		}
 		if(currentPage==totalPage){
-			pageCode.append("<li class='disabled'><a href='#'>��һҳ</a></li>");
+			pageCode.append("<li class='disabled'><a href='#'>下一页</a></li>");
 		}else{
-			pageCode.append("<li><a href='main?page="+(currentPage+1)+"'>��һҳ</a></li>");
+			pageCode.append("<li><a href='main?page="+(currentPage+1)+"'>下一页</a></li>");
 		}
-		pageCode.append("<li><a href='main?page="+totalPage+"'>βҳ</a></li>");
+		pageCode.append("<li><a href='main?page="+totalPage+"'>尾页</a></li>");
 		return pageCode.toString();
 	}
 	

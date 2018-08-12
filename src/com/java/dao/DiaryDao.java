@@ -23,7 +23,7 @@ public class DiaryDao {
 			sb.append(" and t1.typeId="+s_diary.getTypeId());
 		}
 		if(StringUtil.isNotEmpty(s_diary.getReleaseDateStr())){
-			sb.append(" and DATE_FORMAT(t1.releaseDate,'%YÄê%mÔÂ')='"+s_diary.getReleaseDateStr()+"'");
+			sb.append(" and DATE_FORMAT(t1.releaseDate,'%Yå¹´%mæœˆ')='"+s_diary.getReleaseDateStr()+"'");
 		}
 		sb.append(" order by t1.releaseDate desc");
 		if(pageBean!=null){
@@ -51,7 +51,7 @@ public class DiaryDao {
 			sb.append(" and t1.typeId="+s_diary.getTypeId());
 		}
 		if(StringUtil.isNotEmpty(s_diary.getReleaseDateStr())){
-			sb.append(" and DATE_FORMAT(t1.releaseDate,'%YÄê%mÔÂ')='"+s_diary.getReleaseDateStr()+"'");
+			sb.append(" and DATE_FORMAT(t1.releaseDate,'%Yå¹´%mæœˆ')='"+s_diary.getReleaseDateStr()+"'");
 		}
 		PreparedStatement pstmt=con.prepareStatement(sb.toString());
 		ResultSet rs=pstmt.executeQuery();
@@ -64,7 +64,7 @@ public class DiaryDao {
 	
 	public List<Diary> diaryCountList(Connection con)throws Exception{
 		List<Diary> diaryCountList=new ArrayList<Diary>();
-		String sql="SELECT DATE_FORMAT(releaseDate,'%YÄê%mÔÂ') as releaseDateStr ,COUNT(*) AS diaryCount  FROM t_diary GROUP BY DATE_FORMAT(releaseDate,'%YÄê%mÔÂ') ORDER BY DATE_FORMAT(releaseDate,'%YÄê%mÔÂ') DESC;";
+		String sql="SELECT DATE_FORMAT(releaseDate,'%Yå¹´%mæœˆ') as releaseDateStr ,COUNT(*) AS diaryCount  FROM t_diary GROUP BY DATE_FORMAT(releaseDate,'%Yå¹´%mæœˆ') ORDER BY DATE_FORMAT(releaseDate,'%Yå¹´%mæœˆ') DESC;";
 		PreparedStatement pstmt=con.prepareStatement(sql);
 		ResultSet rs=pstmt.executeQuery();
 		while(rs.next()){
