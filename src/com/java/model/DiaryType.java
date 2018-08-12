@@ -6,6 +6,14 @@ public class DiaryType {
 	private String typeName;
 	private int diaryCount;
 	
+	public DiaryType() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public DiaryType(String typeName) {
+		super();
+		this.typeName = typeName;
+	}
 	public int getDiaryTypeId() {
 		return diaryTypeId;
 	}

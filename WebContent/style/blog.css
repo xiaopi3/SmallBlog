@@ -29,10 +29,6 @@
 	margin-top: 15px;
 }
 
-.data_list .diary_datas ul li span{
-	font-size: 18px;
-}
-
 .data_list .datas{
 	padding: 5px;
 }
@@ -83,4 +79,13 @@
 .data_list .diary_title{
 	margin-top:20px;
 	text-align: center;
+}
+
+.data_list .data_list_title .diaryType_add{
+	float: right;
+	margin-right: 20px;
+}
+
+.data_list .diaryType_form{
+	margin-top:20px;
 }

@@ -28,4 +28,14 @@ public class UserDao {
 		}
 		return resultUser;
 	}
+	
+	public int userUpdate(Connection con,User user)throws Exception{
+		String sql="update t_user set nickName=?,imageName=?,mood=? where userId=?";
+		PreparedStatement pstmt=con.prepareStatement(sql);
+		pstmt.setString(1, user.getNickName());
+		pstmt.setString(2, user.getImageName());
+		pstmt.setString(3, user.getMood());
+		pstmt.setInt(4, user.getId());
+		return pstmt.executeUpdate();
+	}
 }

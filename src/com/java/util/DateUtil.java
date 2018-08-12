@@ -23,5 +23,9 @@ public class DateUtil {
 		return sdf.parse(str);
 	}
 	
-	
+	public static String getCurrentDateStr()throws Exception{
+		Date date=new Date();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmss");
+		return sdf.format(date);
+	}
 }
